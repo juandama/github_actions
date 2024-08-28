@@ -1,18 +1,20 @@
 name: Lint
 
-on: push
+on: 
+  push
 
 jobs:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
         uses: actions/checkout@v1
 
-                  - name: Super-Linter
-  # You may pin to the exact commit or the version.
-  # uses: super-linter/super-linter@02a1172d274f021e4c70f66e23f1085eadd1064b
-  uses: super-linter/super-linter@v7.0.0
-          
+      - name: Run Super-Linter
+        # You may pin to the exact commit or the version.
+        # uses: super-linter/super-linter@02a1172d274f021e4c70f66e23f1085eadd1064b
+        uses: super-linter/super-linter@v7.0.0
+        
         env:
-          github_token: ${{ secrets.github_token }}
-          
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
